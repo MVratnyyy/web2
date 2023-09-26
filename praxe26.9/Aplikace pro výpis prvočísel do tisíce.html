@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Výpis prvočísel do 1000</title>
+</head>
+<body>
+    <button id="startButton">Start</button>
+    <pre id="primeNumbers"></pre>
+
+    <script>
+        function isPrime(num) {
+            if (num <= 1) return false;
+            if (num <= 3) return true;
+
+            if (num % 2 === 0 || num % 3 === 0) return false;
+
+            for (let i = 5; i * i <= num; i += 6) {
+                if (num % i === 0 || num % (i + 2) === 0) return false;
+            }
+
+            return true;
+        }
+
+        document.getElementById("startButton").addEventListener("click", function() {
+            let primes = [];
+
+            for (let i = 2; i <= 1000; i++) {
+                if (isPrime(i)) {
+                    primes.push(i);
+                }
+            }
+
+            document.getElementById("primeNumbers").textContent = primes.join(", ");
+        });
+    </script>
+</body>
+</html>

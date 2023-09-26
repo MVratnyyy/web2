@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vykreslení čáry</title>
+</head>
+<body>
+    <label for="lineLength">Jak dlouhou čáru chceš vykreslit?</label>
+    <input type="number" id="lineLength">
+    <button id="drawButton">Vykreslit</button>
+    <div id="line"></div>
+
+    <style>
+        #line {
+            font-size: 0;
+        }
+
+        #line .dot {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            background-color: black;
+            margin-right: 1px;
+        }
+    </style>
+
+    <script>
+        document.getElementById("drawButton").addEventListener("click", function() {
+            const lineLength = parseInt(document.getElementById("lineLength").value);
+            const lineElement = document.getElementById("line");
+            lineElement.innerHTML = "";
+
+            for (let i = 0; i < lineLength; i++) {
+                const dot = document.createElement("span");
+                dot.classList.add("dot");
+                lineElement.appendChild(dot);
+            }
+        });
+    </script>
+</body>
+</html>
